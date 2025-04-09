@@ -1,0 +1,40 @@
+body{
+    background-color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+canvas{
+    border: 1px solid black;
+    border-radius: 7px;
+    display: block;
+    margin: auto;
+}
+#container{
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+#takkar{ 
+    display: block;
+    width: 40%;
+    height: auto;
+    margin: auto;
+    text-align: center;
+}
+#takkar button{
+    width: 130px;
+    height: 40px;
+    font-size: large;
+    font-weight: bold;
+    background: none;
+    border-radius: 5px;
+}
+#takkar button:hover{
+    background-color: black;
+    color: white;
+    border: none;
+}
+#atburdarTextiBox{
+    position: relative;
+    margin: auto;
+    width: 85%;
+}
