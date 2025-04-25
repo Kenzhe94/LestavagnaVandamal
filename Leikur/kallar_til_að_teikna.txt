@@ -10,19 +10,19 @@ Sókrates X
 Plató X
 
 Leikskólinn X
-Börn JB 
+Börn JB X
 
 Drepa 1 X
 Drepa 5 X
 
 Barnaspítalinn X
-2 læknar
+2 læknar X
 
 7 gamalmenni X
 3 unglingar X
 
-slæmur ríkisborgari (kúkur)
-góður ríkisborgari (poki)
+slæmur ríkisborgari (kúkur) X
+góður ríkisborgari (poki) 
 
 Þinn versti óvinur X
 Ekkert X
