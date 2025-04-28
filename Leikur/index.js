@@ -1,6 +1,7 @@
 // Setja inn JB og baeta vid haus hreyfing
 // Uppfaera og setja inn myndir
 // baeta vid fleiri leikir
+// laga level 9-10
 
 
 var script = document.createElement('script');
@@ -27,12 +28,14 @@ let jbBody = new Image();
 jbBody.src = 'Img/JB/lever.png'
 let jbTakaStong = new Image();
 jbTakaStong.src = 'Img/JB/pull_lever.png'
-let kettir = new Image();
-kettir.src = 'Img/annad/kettir.png'
+let jbBrodirMynd = new Image();
+jbBrodirMynd.src = 'Img/folk/einn_kall_gleraugu.png'
+let kettirMynd = new Image();
+kettirMynd.src = 'Img/annad/kettir.png'
 let leikskoliMynd = new Image();
 leikskoliMynd.src = 'Img/annad/leikskoli.png'
-let spitaliMynd = new Image();
-spitaliMynd.src = 'Img/annad/barnaspitali.png'
+let barnaspitaliMynd = new Image();
+barnaspitaliMynd.src = 'Img/annad/barnaspitali.png'
 let fimmManneskjurMynd = new Image();
 fimmManneskjurMynd.src = 'Img/folk/5_kallar.png'
 let einKallVenjuMynd = new Image();
@@ -45,6 +48,26 @@ let bekkurYZMynd = new Image();
 bekkurYZMynd.src = 'Img/annad/ZY_bekkur.png'
 let bekkurXMynd = new Image();
 bekkurXMynd.src = 'Img/annad/X_bekkur.png'
+let sokratesMynd = new Image();
+sokratesMynd.src = 'Img/folk/sokrates.png'
+let platonMynd = new Image();
+platonMynd.src = 'Img/folk/platon.png'
+let tveirLaeknarMynd = new Image();
+tveirLaeknarMynd.src = 'Img/folk/2_laeknar.png'
+let sjo_gamalt_folkMynd = new Image();
+sjo_gamalt_folkMynd.src = 'Img/folk/7_gamalt_folk.png'
+let trir_unglingarMynd = new Image();
+trir_unglingarMynd.src = 'Img/folk/3_unglingar.png'
+let slaemur_borgariMynd = new Image();
+slaemur_borgariMynd.src = 'Img/folk/slaemur_borgari.png'
+let godur_borgariMynd = new Image();
+godur_borgariMynd.src = 'Img/folk/godur_borgari.png'
+let versti_ovinurMynd = new Image();
+versti_ovinurMynd.src = 'Img/folk/versti_ovinur.png'
+let bindu_sig_viljandiMynd = new Image();
+bindu_sig_viljandiMynd.src = 'Img/folk/bindu_sig_viljandi.png'
+
+
 
 
 
@@ -156,13 +179,13 @@ const leikskoli = new element({
     numPeople: 12,
     image: leikskoliMynd
 })
-const spitali = new element({
-    x: 850,
+const barnaspitali = new element({
+    x: 900,
     y: 80,
     width: 300,
     height: 175,
     numPeople: 12,
-    image: spitaliMynd
+    image: barnaspitaliMynd
 })
 const jbBorn = new element({
     x: 800,
@@ -171,6 +194,94 @@ const jbBorn = new element({
     height: 175,
     numPeople: 2,
     image: jbBornMynd
+})
+const jbBrodir = new element({
+    x: 800,
+    y: 320,
+    width: 300,
+    height: 175,
+    numPeople: 1,
+    image: jbBrodirMynd
+})
+const kettir = new element({
+    x: 850,
+    y: 80,
+    width: 300,
+    height: 175,
+    numPeople: 2,
+    image: kettirMynd
+})
+const sokrates = new element({
+    x: 850,
+    y: 80,
+    width: 300,
+    height: 175,
+    numPeople: 1,
+    image: sokratesMynd
+})
+const platon = new element({
+    x: 800,
+    y: 320,
+    width: 300,
+    height: 175,
+    numPeople: 1,
+    image: platonMynd
+})
+const tveirLaeknar = new element({
+    x: 800,
+    y: 320,
+    width: 300,
+    height: 175,
+    numPeople: 2,
+    image: tveirLaeknarMynd
+})
+const sjo_gamalt_folk = new element({
+    x: 850,
+    y: 80,
+    width: 300,
+    height: 175,
+    numPeople: 7,
+    image: sjo_gamalt_folkMynd
+})
+const trir_unglingar = new element({
+    x: 800,
+    y: 320,
+    width: 300,
+    height: 175,
+    numPeople: 3,
+    image: trir_unglingarMynd
+})
+const slaemur_borgari = new element({
+    x: 850,
+    y: 80,
+    width: 300,
+    height: 175,
+    numPeople: 1,
+    image: slaemur_borgariMynd
+})
+const godur_borgari = new element({
+    x: 800,
+    y: 320,
+    width: 300,
+    height: 175,
+    numPeople: 1,
+    image: godur_borgariMynd
+})
+const versti_ovinur = new element({
+    x: 850,
+    y: 80,
+    width: 300,
+    height: 175,
+    numPeople: 1,
+    image: versti_ovinurMynd
+})
+const fimmBunduViljandi = new element({
+    x: 850,
+    y: 80,
+    width: 300,
+    height: 175,
+    numPeople: 5,
+    image: bindu_sig_viljandiMynd
 })
 
 const Level1 = new LevelBoard({
@@ -193,12 +304,49 @@ const Level3 = new LevelBoard({
 })
 const Level4 = new LevelBoard({
     boardLevel: 4,
-    Val1: leikskoli,
-    Val2: jbBorn,
+    Val1: kettir,
+    Val2: jbBrodir,
     boardUpp:'blabla'
 })
+const Level5 = new LevelBoard({
+    boardLevel: 5,
+    Val1: sokrates,
+    Val2: platon,
+    boardUpp:'blabla'
+})
+const Level6 = new LevelBoard({
+    boardLevel: 6,
+    Val1: barnaspitali,
+    Val2: tveirLaeknar,
+    boardUpp:'blabla'
+})
+const Level7 = new LevelBoard({
+    boardLevel: 7,
+    Val1: sjo_gamalt_folk,
+    Val2: trir_unglingar,
+    boardUpp: 'blablubli RAAACCCOOON '
+})
+const Level8 = new LevelBoard({
+    boardLevel: 8,
+    Val1: slaemur_borgari,
+    Val2: godur_borgari,
+    boardUpp: 'blablubli RAAACCCOOON '
+})
+const Level9 = new LevelBoard({
+    boardLevel: 9,
+    Val1: versti_ovinur,
+    Val2: kettir,
+    boardUpp: 'blablubli RAAACCCOOON '
+})
+const Level10 = new LevelBoard({
+    boardLevel: 10,
+    Val1: fimmBunduViljandi,
+    Val2: jbBrodir,
+    boardUpp: 'blablubli RAAACCCOOON '
+})
 
-var levelDeck = [Level1,Level2,Level3,Level4];
+
+var levelDeck = [Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10];
 
 function hreyfaLest(){
     if (boolGeraEkkert){
