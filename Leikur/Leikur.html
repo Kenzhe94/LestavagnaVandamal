@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lestarvandamálið</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js" 
     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
     crossorigin="anonymous">
@@ -16,6 +16,10 @@
         <div id="canvasBox">
             <canvas id="leikbord" width="1200" height="700"></canvas>
             <img class="jbHaus" src="./Img/JB/Johann3.png">
+            <div id="container_refresh">
+                <label id="byrja_uppa_nytt">Byrja upp á nýtt</label>
+                <button id="refresh" onclick="window.location.reload();"><img src="./Img/annad/refresh1.png" width="50px" height="50px"></button>
+            </div>
         </div>
         
         <div id="atburdarTextiBox">
@@ -31,12 +35,15 @@
     </div>
     
 
-    <script src="index.js"></script>
+    <script src="./index.js"></script>
     <script>
+        $("#refresh").hide();
+        $("#byrja_uppa_nytt").hide();
         $("#næstaBorð").hide();
         $("#pullLever").click(function(){
             $("#pullLever").hide();
             $("#noPullLever").hide();
+            $("#næstaBorð").stop();
             $("#næstaBorð").show().css({"position": "relative","opacity": 0, "left": "+=100"});
             $("#næstaBorð").animate({left:0, opacity:1}, 4000);
 
@@ -44,6 +51,7 @@
         $("#noPullLever").click(function(){
             $("#pullLever").hide();
             $("#noPullLever").hide();
+            $("#næstaBorð").stop();
             $("#næstaBorð").show().css({"position": "relative","opacity": 0, "left": "+=100"});
             $("#næstaBorð").animate({left:0, opacity:1}, 4000);
             

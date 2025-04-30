@@ -13,6 +13,10 @@ p {
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
 }
+button:hover{
+    cursor: pointer;
+}
+
 #container{
     position: relative;
     width: 1400px;
@@ -50,6 +54,28 @@ p {
     height: 80%;
     /* border: 2px solid black; */
 }
+#canvasBox div #refresh{
+    position: absolute;
+    border-radius: 5px;
+    background: none;
+    top: 85%;
+    left: 55%;
+}
+#canvasBox div #byrja_uppa_nytt {
+    position: absolute;
+    top: 87%;
+    left: 38%;
+    font-size: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+#canvasBox #container_refresh img:hover {
+    filter: invert(100%);
+}
+#canvasBox #container_refresh button:hover {
+    background-color: black;
+}
 
 .jbHaus {
     position: absolute;
@@ -65,3 +91,4 @@ p {
     50% {transform: translateX(5px) rotate(15deg);}
     100% {transform: translateX(-5px) rotate(-15deg);}
 }
+

@@ -1,9 +1,3 @@
-// Setja inn JB og baeta vid haus hreyfing
-// Uppfaera og setja inn myndir
-// baeta vid fleiri leikir
-// laga level 9-10
-
-
 var script = document.createElement('script');
 script.src = "https://code.jquery.com/jquery-3.7.1.js";
 document.getElementsByTagName("head")[0].appendChild(script);
@@ -75,6 +69,10 @@ bindu_sig_viljandiMynd.src = 'Img/folk/bindu_sig_viljandi.png'
 document.getElementById("pullLever").addEventListener('click', takki1);
 document.getElementById("noPullLever").addEventListener('click',takki2);
 document.getElementById("næstaBorð").addEventListener("click", switchToNextLevel);
+document.getElementById("takkar");
+document.getElementById("refresh");
+document.getElementById("byrja_uppa_nytt");
+
 
 class element{
     constructor (options){
@@ -120,25 +118,6 @@ const lest = new element({
     height: 175,
     image: lestMynd 
 })
-
-// const jbHaus = {
-//     x: 100,
-//     y: 400,
-//     width: 300,
-//     height: 200,
-//     runningFrames: [],
-//     frameIndex:0,
-//     frameDelay:6,
-//     frameCounter:0
-// };
-// function preLoadImages(){
-//     for(let i = 1; i<=5; i++){
-//         const img = new Image();
-//         img.src = `Img/JB/Johann${i}.png`;
-//         jbHaus.runningFrames.push(img);
-//     }
-// }
-// preLoadImages();
 
 const einManneskja = new element({
     x: 850,
@@ -257,7 +236,7 @@ const slaemur_borgari = new element({
     y: 80,
     width: 300,
     height: 175,
-    numPeople: 1,
+    numPeople: 2,
     image: slaemur_borgariMynd
 })
 const godur_borgari = new element({
@@ -308,7 +287,7 @@ const Level2 = new LevelBoard({
     boardLevel: 2,
     Val1: bekkurX,
     Val2: bekkurZY,
-    boardUpp:"Ó nei, lestin stefnir í átt að tveim bekkjum, X-bekk og ZY-bekk. Þú getur bjargað ZY-bekknum á kostnað X-bekksins. Hvað mun Jóhann gera?"
+    boardUpp:"Ó nei, lestin stefnir í átt að tveimur bekkjum, X-bekk og ZY-bekk. Þú getur bjargað ZY-bekknum á kostnað X-bekksins. Hvað mun Jóhann gera?"
 })
 const Level3 = new LevelBoard({
     boardLevel: 3,
@@ -338,7 +317,7 @@ const Level7 = new LevelBoard({
     boardLevel: 7,
     Val1: trir_unglingar,
     Val2: sjo_gamalt_folk,
-    boardUpp: 'Ó nei, lestin stefnir í átt að sjö gamalmennum sem struku af Hrafnistu. Væri best að refsa þeim, eða þrem unglingum sem hata alla heimspekikennara?'
+    boardUpp: 'Ó nei, lestin stefnir í átt að sjö gamalmennum sem struku af Hrafnistu. Væri best að refsa þeim, eða þremur unglingum sem hata alla heimspekikennara?'
 })
 const Level8 = new LevelBoard({
     boardLevel: 8,
@@ -393,9 +372,11 @@ function hreyfaLest(){
 setInterval(hreyfaLest, 1);
 
 function drawLevel(Level){
-    ctx.font = "24px Monospace";
-    ctx.fillText(`Level : ${Level}`, c.width/2-40, 50);
+    ctx.font = "bold 24px Monospace";
+    ctx.fillStyle = "grey"
+    ctx.fillText(`Borð : ${Level}`, c.width/2-40, 50);
 }
+
 function keyraYfir(Level){
     tempVal1 = Level.boardVal1;
     tempVal2 = Level.boardVal2;
@@ -457,10 +438,15 @@ function leikLokid(){
         ctx.clearRect(0,0,c.width,c.height)
         ctx.font = "60px Courier New";
         ctx.fillStyle = "#000000";
-        ctx.fillText("LEIK LOKIÐ", c.width / 2-100, c.height/2);
+        ctx.fillText("LEIK LOKIÐ", c.width / 2-190, c.height/2);
 
         ctx.font = "38px Courier New";
-        ctx.fillText(`Þú drapst ${score} einstaklinga!`, c.width/2-300,c.height/2+150);
+        ctx.fillText(`Þú hefur ollið ${score} dauðsföllum!`, c.width/2-300,c.height/2+150);
+
+        $("#takkar").hide();
+        $("#refresh").show();
+        $("#byrja_uppa_nytt").show();
+
     }
 }
 
