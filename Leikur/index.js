@@ -14,6 +14,7 @@ const uppText = document.getElementById('atburdarTexti');
 
 var levelCounter = 0;
 var score = 0;
+var currentLevel = {};
 let boolGeraEkkert = false;
 let boolTakaíStöng = false;
 
@@ -22,8 +23,8 @@ let ground = new Image();
 ground.src = 'Img/Gummibackground.png'
 let lestMynd = new Image();
 lestMynd.src = 'Img/annad/lest.png'
-let jbHaus = new Image();
-jbHaus.src = 'Img/JB/Jóhann1.png'
+let jbHausMynd = new Image();
+jbHausMynd.src = 'Img/JB/Johann1.png'
 let jbBody = new Image();
 jbBody.src = 'Img/JB/lever.png'
 let jbTakaStong = new Image();
@@ -71,8 +72,8 @@ bindu_sig_viljandiMynd.src = 'Img/folk/bindu_sig_viljandi.png'
 
 
 
-document.getElementById("pullLever").addEventListener('click',() => {boolTakaíStöng=true});
-document.getElementById("noPullLever").addEventListener('click',() => {boolGeraEkkert=true});
+document.getElementById("pullLever").addEventListener('click', takki1);
+document.getElementById("noPullLever").addEventListener('click',takki2);
 document.getElementById("næstaBorð").addEventListener("click", switchToNextLevel);
 
 class element{
@@ -83,7 +84,7 @@ class element{
         this.height = options.height;
         this.image = options.image;
         this.title = options.title;
-        this.numPeople = options.num;
+        this.numPeople = options.numPeople;
     }
     draw(ctx){
         if(this.image){
@@ -120,21 +121,21 @@ const lest = new element({
     image: lestMynd 
 })
 
-// const JB = {
+// const jbHaus = {
 //     x: 100,
-//     y: 500,
-//     width: 25,
-//     height: 45,
+//     y: 400,
+//     width: 300,
+//     height: 200,
 //     runningFrames: [],
 //     frameIndex:0,
-//     frameDelay:3,
+//     frameDelay:6,
 //     frameCounter:0
 // };
 // function preLoadImages(){
 //     for(let i = 1; i<=5; i++){
 //         const img = new Image();
-//         img.src = `img/JB${i}.png`;
-//         JB.runningFrames.push(img);
+//         img.src = `Img/JB/Johann${i}.png`;
+//         jbHaus.runningFrames.push(img);
 //     }
 // }
 // preLoadImages();
@@ -157,7 +158,7 @@ const fimmManneskjur = new element({
 })
 const bekkurZY = new element({
     x: 800,
-    y: 400,
+    y: 300,
     width: 300,
     height: 175,
     numPeople: 16,
@@ -165,26 +166,26 @@ const bekkurZY = new element({
 })
 const bekkurX = new element({
     x: 850,
-    y: 100,
+    y: 80,
     width: 300,
     height: 175,
     numPeople: 40,
     image: bekkurXMynd
 })
 const leikskoli = new element({
-    x: 900,
-    y: 80,
-    width: 300,
-    height: 175,
-    numPeople: 12,
+    x: 800,
+    y: 40,
+    width: 400,
+    height: 233,
+    numPeople: 20,
     image: leikskoliMynd
 })
 const barnaspitali = new element({
-    x: 900,
-    y: 80,
-    width: 300,
-    height: 175,
-    numPeople: 12,
+    x: 800,
+    y: 40,
+    width: 400,
+    height: 234,
+    numPeople: 50,
     image: barnaspitaliMynd
 })
 const jbBorn = new element({
@@ -236,16 +237,16 @@ const tveirLaeknar = new element({
     image: tveirLaeknarMynd
 })
 const sjo_gamalt_folk = new element({
-    x: 850,
-    y: 80,
-    width: 300,
-    height: 175,
+    x: 800,
+    y: 320,
+    width: 400,
+    height: 233,
     numPeople: 7,
     image: sjo_gamalt_folkMynd
 })
 const trir_unglingar = new element({
-    x: 800,
-    y: 320,
+    x: 850,
+    y: 80,
     width: 300,
     height: 175,
     numPeople: 3,
@@ -283,6 +284,19 @@ const fimmBunduViljandi = new element({
     numPeople: 5,
     image: bindu_sig_viljandiMynd
 })
+const tomt = new element({
+    width: 200,
+    numPeople: 0
+})
+const venjubundinn = new element({
+    x: 800,
+    y: 320,
+    width: 300,
+    height: 175,
+    numPeople: 1,
+    image: einKallVenjuMynd
+})
+
 
 const Level1 = new LevelBoard({
     boardLevel: 1,
@@ -300,53 +314,60 @@ const Level3 = new LevelBoard({
     boardLevel: 3,
     Val1: leikskoli,
     Val2: jbBorn,
-    boardUpp:"Ó nei, lestin stefnir í átt að börnunum þínum Jóhann. Þú getur bjargað þeim með að taka í stöngina, en þá keyrir lestin yfir 5 ára deild leikskólans Ævintýraborg við Nauthólsveg. Hvað gerir þú?"
+    boardUpp:"Ó nei, lestin stefnir í átt að börnunum þínum Jóhann. Þú getur bjargað þeim með því að taka í stöngina, en þá keyrir lestin yfir 5 ára deild leikskólans Ævintýraborg við Nauthólsveg. Hvað gerir þú?"
 })
 const Level4 = new LevelBoard({
     boardLevel: 4,
     Val1: kettir,
     Val2: jbBrodir,
-    boardUpp:'blabla'
+    boardUpp:'Ó nei, lestin stefnir í átt að þínum elskulega bróðir. Þú getur bjargað honum, en þá keyrir lestin yfir krúttlegu kettina þína. Hvað ætlar þú að gera Jóhann?'
 })
 const Level5 = new LevelBoard({
     boardLevel: 5,
     Val1: sokrates,
     Val2: platon,
-    boardUpp:'blabla'
+    boardUpp:'Jæja Jóhann, Plató og Sókrates eru bundnir við lestateinana. Lestin stefnir í átt að Sókrates en þú getur bjargað honum á kostnað Plató. Hvor heimspekingurinn er þér meira virði?'
 })
 const Level6 = new LevelBoard({
     boardLevel: 6,
     Val1: barnaspitali,
     Val2: tveirLaeknar,
-    boardUpp:'blabla'
+    boardUpp:'Ó nei, lestin stefnir í átt að heimsins merkustu læknum. Þeir eru hársbreidd frá því að finna lækningu við Malaríu og Krabbamein. Hins vegar, ef þú bjargar þeim þá keyrir lestin yfir alla sjúklinga Barnaspítala Hringsins. Hvað mun Jóhann gera?'
 })
 const Level7 = new LevelBoard({
     boardLevel: 7,
-    Val1: sjo_gamalt_folk,
-    Val2: trir_unglingar,
-    boardUpp: 'blablubli RAAACCCOOON '
+    Val1: trir_unglingar,
+    Val2: sjo_gamalt_folk,
+    boardUpp: 'Ó nei, lestin stefnir í átt að sjö gamalmennum sem struku af Hrafnistu. Væri best að refsa þeim, eða þrem unglingum sem hata alla heimspekikennara?'
 })
 const Level8 = new LevelBoard({
     boardLevel: 8,
     Val1: slaemur_borgari,
     Val2: godur_borgari,
-    boardUpp: 'blablubli RAAACCCOOON '
+    boardUpp: 'Ó nei, lestin stefnir í átt að fyrirmyndar ríkisborgara sem gengur um götur borgarinnar og tínir upp hundaskít eftir aðra. Þú getur bjargað honum en þá keyrir lestin yfir slæman ríkisborgara sem tínir aldrei upp kúkinn eftir hundinn sinn. Hvað ætlar þú að gera Jóhann?'
 })
 const Level9 = new LevelBoard({
     boardLevel: 9,
     Val1: versti_ovinur,
-    Val2: kettir,
-    boardUpp: 'blablubli RAAACCCOOON '
+    Val2: tomt,
+    boardUpp: 'Þetta er nú meira ruglið! Lestin stefnir í átt að engu. Hins vegar, getur þú tekið í stöngina og látið lestina keyra yfir þinn versta óvin og enginn mun vita af því. Hvað mun Jóhann gera?'
 })
 const Level10 = new LevelBoard({
     boardLevel: 10,
     Val1: fimmBunduViljandi,
-    Val2: jbBrodir,
-    boardUpp: 'blablubli RAAACCCOOON '
+    Val2: venjubundinn,
+    boardUpp: 'Ó nei, lestin stefnir í átt að einstaklingi sem er bundinn við lestateinana gegn sínum vilja. Viltu bjarga honum eða fimm einstaklingum sem bundu sig viljandi við lestateinana? Jóhann, hvað ætlar þú að gera?'
+})
+const Level11 = new LevelBoard({
+    boardLevel: 11,
+    Val1: tomt,
+    Val2: tomt,
+    boardUpp: ''
 })
 
 
-var levelDeck = [Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10];
+
+var levelDeck = [Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10,Level11];
 
 function hreyfaLest(){
     if (boolGeraEkkert){
@@ -378,7 +399,10 @@ function drawLevel(Level){
 function keyraYfir(Level){
     tempVal1 = Level.boardVal1;
     tempVal2 = Level.boardVal2;
+    // console.log(Level.boardVal1);
+    console.log(`score:${score}`);
     if(boolTakaíStöng){
+        // score += tempVal1.numPeople;
         JB.image = jbTakaStong;
         if ((lest.x + lest.width) >= (tempVal1.x + tempVal1.width/2 )){
             tempVal1.image = splatMynd;
@@ -390,13 +414,9 @@ function keyraYfir(Level){
         }
     }
 }
-function animateJBhaus(){
-
-}
-
-
 
 function startLevel(LevelToPlay){
+    currentLevel = LevelToPlay;
     ctx.clearRect(0,0,c.width,c.height);
     keyraYfir(LevelToPlay);
 
@@ -408,10 +428,11 @@ function startLevel(LevelToPlay){
     lest.draw(ctx);
     uppText.innerHTML = LevelToPlay.boardUpp;
     
+
 }
 function switchToNextLevel(){
     // skodar hvort vid segjum komnir ad endanum
-    console.log(levelCounter)
+    
     if (levelDeck.length >= levelCounter){
         boolGeraEkkert = false;
         boolTakaíStöng = false;
@@ -421,13 +442,32 @@ function switchToNextLevel(){
         JB.image = jbBody
     }
     // fela takkar?
-    
+}
+function takki1(){
+    boolTakaíStöng=true;
+    score += currentLevel.boardVal1.numPeople;
+}
+function takki2(){
+    boolGeraEkkert=true;
+    score += currentLevel.boardVal2.numPeople;
+}
 
+function leikLokid(){
+    if(levelCounter>9){
+        ctx.clearRect(0,0,c.width,c.height)
+        ctx.font = "60px Courier New";
+        ctx.fillStyle = "#000000";
+        ctx.fillText("LEIK LOKIÐ", c.width / 2-100, c.height/2);
+
+        ctx.font = "38px Courier New";
+        ctx.fillText(`Þú drapst ${score} einstaklinga!`, c.width/2-300,c.height/2+150);
+    }
 }
 
 function loop(){
     //draw level
     startLevel(levelDeck[levelCounter]);
+    leikLokid();
     //hreyfa lest
 
     // ctx.drawImage(runningFrames.img, JB.x,JB.y,JB.width,JB.height);

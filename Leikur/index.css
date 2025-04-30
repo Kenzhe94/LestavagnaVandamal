@@ -1,6 +1,6 @@
 body{
     /* background-color: beige; */
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: monospace;
 }
 canvas{
     /* border: 1px solid black; */
@@ -8,9 +8,15 @@ canvas{
     display: block;
     margin: auto;
 }
+p {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
 #container{
     position: relative;
-    width: 80%;
+    width: 1400px;
+    /* border: 2px solid black; */
     margin: auto;
 }
 #takkar{ 
@@ -37,4 +43,25 @@ canvas{
     position: relative;
     margin: auto;
     width: 85%;
+}
+#canvasBox
+{   
+    position: relative;
+    height: 80%;
+    /* border: 2px solid black; */
+}
+
+.jbHaus {
+    position: absolute;
+    top: 57%;
+    left: 14%;
+    width: 300px;
+    height: 200px;
+    animation: bobble 2s infinite linear;
+}
+
+@keyframes bobble{
+    0% {transform: translateX(-5px) rotate(-15deg);}
+    50% {transform: translateX(5px) rotate(15deg);}
+    100% {transform: translateX(-5px) rotate(-15deg);}
 }
