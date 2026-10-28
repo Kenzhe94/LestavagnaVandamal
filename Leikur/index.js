@@ -67,15 +67,15 @@ bindu_sig_viljandiMynd.src = 'Img/folk/bindu_sig_viljandi.png'
 
 
 document.getElementById("pullLever").addEventListener('click', takki1);
-document.getElementById("noPullLever").addEventListener('click',takki2);
+document.getElementById("noPullLever").addEventListener('click', takki2);
 document.getElementById("næstaBorð").addEventListener("click", switchToNextLevel);
 document.getElementById("takkar");
 document.getElementById("refresh");
 document.getElementById("byrja_uppa_nytt");
 
-
-class element{
-    constructor (options){
+// constructor
+class element {
+    constructor(options) {
         this.x = options.x;
         this.y = options.y;
         this.width = options.width;
@@ -84,19 +84,19 @@ class element{
         this.title = options.title;
         this.numPeople = options.numPeople;
     }
-    draw(ctx){
-        if(this.image){
+    draw(ctx) {
+        if (this.image) {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
-        else{
+        else {
             ctx.fillStyle = '#aaa';
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
 }
 
-class LevelBoard{
-    constructor(options){
+class LevelBoard {
+    constructor(options) {
         this.boardLevel = options.boardLevel;
         this.boardVal1 = options.Val1;
         this.boardVal2 = options.Val2;
@@ -116,7 +116,7 @@ const lest = new element({
     y: 100,
     width: 300,
     height: 175,
-    image: lestMynd 
+    image: lestMynd
 })
 
 const einManneskja = new element({
@@ -281,37 +281,37 @@ const Level1 = new LevelBoard({
     boardLevel: 1,
     Val1: einManneskja,
     Val2: fimmManneskjur,
-    boardUpp:"Ó nei, lest stefnir í átt að manneskjum sem eru bundnar í reipi. Ef þú tekur í stöngina þá bjargaru 5 en drepur 1 manneskju í staðin. Jóhann, hvað ætlar þú að gera?"
+    boardUpp: "Ó nei, lest stefnir í átt að manneskjum sem eru bundnar í reipi. Ef þú tekur í stöngina þá bjargaru 5 en drepur 1 manneskju í staðin. Jóhann, hvað ætlar þú að gera?"
 })
 const Level2 = new LevelBoard({
     boardLevel: 2,
     Val1: bekkurX,
     Val2: bekkurZY,
-    boardUpp:"Ó nei, lestin stefnir í átt að tveimur bekkjum, X-bekk og ZY-bekk. Þú getur bjargað ZY-bekknum á kostnað X-bekksins. Hvað mun Jóhann gera?"
+    boardUpp: "Ó nei, lestin stefnir í átt að tveimur bekkjum, X-bekk og ZY-bekk. Þú getur bjargað ZY-bekknum á kostnað X-bekksins. Hvað mun Jóhann gera?"
 })
 const Level3 = new LevelBoard({
     boardLevel: 3,
     Val1: leikskoli,
     Val2: jbBorn,
-    boardUpp:"Ó nei, lestin stefnir í átt að börnunum þínum Jóhann. Þú getur bjargað þeim með því að taka í stöngina, en þá keyrir lestin yfir 5 ára deild leikskólans Ævintýraborg við Nauthólsveg. Hvað gerir þú?"
+    boardUpp: "Ó nei, lestin stefnir í átt að börnunum þínum Jóhann. Þú getur bjargað þeim með því að taka í stöngina, en þá keyrir lestin yfir 5 ára deild leikskólans Ævintýraborg við Nauthólsveg. Hvað gerir þú?"
 })
 const Level4 = new LevelBoard({
     boardLevel: 4,
     Val1: kettir,
     Val2: jbBrodir,
-    boardUpp:'Ó nei, lestin stefnir í átt að þínum elskulega bróðir. Þú getur bjargað honum, en þá keyrir lestin yfir krúttlegu kettina þína. Hvað ætlar þú að gera Jóhann?'
+    boardUpp: 'Ó nei, lestin stefnir í átt að þínum elskulega bróðir. Þú getur bjargað honum, en þá keyrir lestin yfir krúttlegu kettina þína. Hvað ætlar þú að gera Jóhann?'
 })
 const Level5 = new LevelBoard({
     boardLevel: 5,
     Val1: sokrates,
     Val2: platon,
-    boardUpp:'Jæja Jóhann, Plató og Sókrates eru bundnir við lestateinana. Lestin stefnir í átt að Sókrates en þú getur bjargað honum á kostnað Plató. Hvor heimspekingurinn er þér meira virði?'
+    boardUpp: 'Jæja Jóhann, Plató og Sókrates eru bundnir við lestateinana. Lestin stefnir í átt að Sókrates en þú getur bjargað honum á kostnað Plató. Hvor heimspekingurinn er þér meira virði?'
 })
 const Level6 = new LevelBoard({
     boardLevel: 6,
     Val1: barnaspitali,
     Val2: tveirLaeknar,
-    boardUpp:'Ó nei, lestin stefnir í átt að heimsins merkustu læknum. Þeir eru hársbreidd frá því að finna lækningu við Malaríu og Krabbamein. Hins vegar, ef þú bjargar þeim þá keyrir lestin yfir alla sjúklinga Barnaspítala Hringsins. Hvað mun Jóhann gera?'
+    boardUpp: 'Ó nei, lestin stefnir í átt að heimsins merkustu læknum. Þeir eru hársbreidd frá því að finna lækningu við Malaríu og Krabbamein. Hins vegar, ef þú bjargar þeim þá keyrir lestin yfir alla sjúklinga Barnaspítala Hringsins. Hvað mun Jóhann gera?'
 })
 const Level7 = new LevelBoard({
     boardLevel: 7,
@@ -346,19 +346,19 @@ const Level11 = new LevelBoard({
 
 
 
-var levelDeck = [Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10,Level11];
+var levelDeck = [Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Level10, Level11];
 
-function hreyfaLest(){
-    if (boolGeraEkkert){
+function hreyfaLest() {
+    if (boolGeraEkkert) {
         lest.x += 2;
         lest.y += 0.5;
     }
-    if (boolTakaíStöng){ 
-        if (lest.x > ((c.width/2)-140) && lest.x < ((c.width/2)+120)){
+    if (boolTakaíStöng) {
+        if (lest.x > ((c.width / 2) - 140) && lest.x < ((c.width / 2) + 120)) {
             lest.x += 1.2;
             lest.y -= 0.75;
         }
-        else if (lest.x > ((c.width/2)+120)){
+        else if (lest.x > ((c.width / 2) + 120)) {
             lest.x += 2;
             lest.y -= 0.01;
         }
@@ -368,53 +368,53 @@ function hreyfaLest(){
         }
     }
 
-} 
+}
 setInterval(hreyfaLest, 1);
 
-function drawLevel(Level){
+function drawLevel(Level) {
     ctx.font = "bold 24px Monospace";
     ctx.fillStyle = "grey"
-    ctx.fillText(`Borð : ${Level}`, c.width/2-40, 50);
+    ctx.fillText(`Borð : ${Level}`, c.width / 2 - 40, 50);
 }
 
-function keyraYfir(Level){
+function keyraYfir(Level) {
     tempVal1 = Level.boardVal1;
     tempVal2 = Level.boardVal2;
     // console.log(Level.boardVal1);
     console.log(`score:${score}`);
-    if(boolTakaíStöng){
+    if (boolTakaíStöng) {
         // score += tempVal1.numPeople;
         JB.image = jbTakaStong;
-        if ((lest.x + lest.width) >= (tempVal1.x + tempVal1.width/2 )){
+        if ((lest.x + lest.width) >= (tempVal1.x + tempVal1.width / 2)) {
             tempVal1.image = splatMynd;
         }
     }
-    else{
-        if ((lest.x + lest.width) >= (tempVal2.x + tempVal2.width/2 )){
+    else {
+        if ((lest.x + lest.width) >= (tempVal2.x + tempVal2.width / 2)) {
             tempVal2.image = splatMynd;
         }
     }
 }
 
-function startLevel(LevelToPlay){
+function startLevel(LevelToPlay) {
     currentLevel = LevelToPlay;
-    ctx.clearRect(0,0,c.width,c.height);
+    ctx.clearRect(0, 0, c.width, c.height);
     keyraYfir(LevelToPlay);
 
-    ctx.drawImage(ground,0,0);
+    ctx.drawImage(ground, 0, 0);
     JB.draw(ctx);
     drawLevel(LevelToPlay.boardLevel);
     LevelToPlay.boardVal1.draw(ctx);
     LevelToPlay.boardVal2.draw(ctx);
     lest.draw(ctx);
     uppText.innerHTML = LevelToPlay.boardUpp;
-    
+
 
 }
-function switchToNextLevel(){
+function switchToNextLevel() {
     // skodar hvort vid segjum komnir ad endanum
-    
-    if (levelDeck.length >= levelCounter){
+
+    if (levelDeck.length >= levelCounter) {
         boolGeraEkkert = false;
         boolTakaíStöng = false;
         levelCounter++;
@@ -424,24 +424,24 @@ function switchToNextLevel(){
     }
     // fela takkar?
 }
-function takki1(){
-    boolTakaíStöng=true;
+function takki1() {
+    boolTakaíStöng = true;
     score += currentLevel.boardVal1.numPeople;
 }
-function takki2(){
-    boolGeraEkkert=true;
+function takki2() {
+    boolGeraEkkert = true;
     score += currentLevel.boardVal2.numPeople;
 }
 
-function leikLokid(){
-    if(levelCounter>9){
-        ctx.clearRect(0,0,c.width,c.height)
+function leikLokid() {
+    if (levelCounter > 9) {
+        ctx.clearRect(0, 0, c.width, c.height)
         ctx.font = "60px Courier New";
         ctx.fillStyle = "#000000";
-        ctx.fillText("LEIK LOKIÐ", c.width / 2-190, c.height/2);
+        ctx.fillText("LEIK LOKIÐ", c.width / 2 - 190, c.height / 2);
 
         ctx.font = "38px Courier New";
-        ctx.fillText(`Þú hefur ollið ${score} dauðsföllum!`, c.width/2-300,c.height/2+150);
+        ctx.fillText(`Þú hefur ollið ${score} dauðsföllum!`, c.width / 2 - 300, c.height / 2 + 150);
 
         $("#takkar").hide();
         $("#refresh").show();
@@ -450,7 +450,7 @@ function leikLokid(){
     }
 }
 
-function loop(){
+function loop() {
     //draw level
     startLevel(levelDeck[levelCounter]);
     leikLokid();
